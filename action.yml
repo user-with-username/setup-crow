@@ -8,6 +8,7 @@ runs:
       shell: bash
       run: |
         curl -fsSL https://raw.githubusercontent.com/user-with-username/crow/dev/install.sh | bash
+        echo "$HOME/.crow/bin" >> $GITHUB_PATH
     
     - name: Install crow on windows
       if: runner.os == 'Windows'
