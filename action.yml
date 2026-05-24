@@ -1,0 +1,16 @@
+name: 'Setup crow'
+description: 'Install crow'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install crow on unix
+      if: runner.os != 'Windows'
+      shell: bash
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/user-with-username/crow/dev/install.sh | bash
+    
+    - name: Install crow on windows
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        iex "& { $(Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/user-with-username/crow/dev/install.ps1') }"
